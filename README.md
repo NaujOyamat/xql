@@ -1,37 +1,37 @@
-### YQL(Yet another-Query-Language)
-[![Build Status](https://www.travis-ci.org/caibirdme/yql.svg?branch=master)](https://www.travis-ci.org/caibirdme/yql)
-[![GoDoc](https://godoc.org/github.com/caibirdme/yql?status.svg)](https://godoc.org/github.com/caibirdme/yql)
+### XQL(Yet another-Query-Language)
+[![Build Status](https://www.travis-ci.org/caibirdme/xql.svg?branch=master)](https://www.travis-ci.org/caibirdme/xql)
+[![GoDoc](https://godoc.org/github.com/NaujOyamat/xql?status.svg)](https://godoc.org/github.com/NaujOyamat/xql)
 
 
-YQL is very similar with the `where` part of sql. You can see it as another sql which also support comparison between two sets. YQL have nearly no new concepts, so you can use it well short after reading the examples.Though it's designed for rule engine, it can be widely used in your code logic.
+XQL is very similar with the `where` part of sql. You can see it as another sql which also support comparison between two sets. XQL have nearly no new concepts, so you can use it well short after reading the examples.Though it's designed for rule engine, it can be widely used in your code logic.
 
 ### Install
-`go get github.com/caibirdme/yql`
+`go get github.com/NaujOyamat/xql`
 
 ### Exmaple
-See more examples in the `yql_test.go` and godoc.
+See more examples in the `xql_test.go` and godoc.
 
 ``` go
-	rawYQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90))`
-	result, _ := yql.Match(rawYQL, map[string]interface{}{
+	rawXQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90))`
+	result, _ := xql.Match(rawXQL, map[string]interface{}{
 		"name":  "deen",
 		"age":   int64(23),
 		"hobby": "basketball",
 		"score": int64(100),
 	})
 	fmt.Println(result)
-	rawYQL = `score ∩ (7,1,9,5,3)`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score ∩ (7,1,9,5,3)`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int64{3, 100, 200},
 	})
 	fmt.Println(result)
-	rawYQL = `score in (7,1,9,5,3)`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score in (7,1,9,5,3)`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int64{3, 5, 2},
 	})
 	fmt.Println(result)
-	rawYQL = `score.sum() > 10`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score.sum() > 10`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int{1, 2, 3, 4, 5},
 	})
 	fmt.Println(result)
@@ -45,8 +45,8 @@ See more examples in the `yql_test.go` and godoc.
 And In most cases, you can use `Rule` to cache the AST and then use `Match` to get the result, which could avoid hundreds of thousands of repeated parsing process.
 
 ```go
-	rawYQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
-	ruler,_ := yql.Rule(rawYQL)
+	rawXQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
+	ruler,_ := xql.Rule(rawXQL)
 
 	result, _ := ruler.Match(map[string]interface{}{
 		"name":  "deen",
@@ -97,7 +97,7 @@ data := resolvePostParamsFromRequest(request)
 rules := getRulesFromDB(sql)
 
 for _,rule := range rules {
-	if success,_ := yql.Match(rule.YQL, data); success {
+	if success,_ := xql.Match(rule.XQL, data); success {
 		handler := handlers[rule.ID]
 		handler(data)
 		break
@@ -109,7 +109,7 @@ Also, it can be used in your daily work, which could significantly reduce the de
 ```go
 func isVIP(user User) bool {
 	rule := fmt.Sprintf("monthly_vip=true and now<%s or eternal_vip=1 or ab_test!=false", user.ExpireTime)
-	ok,_ := yql.Match(rule, map[string]interface{}{
+	ok,_ := xql.Match(rule, map[string]interface{}{
 		"monthly_vip": user.IsMonthlyVIP,
 		"now": time.Now().Unix(),
 		"eternal_vip": user.EternalFlag,
@@ -119,10 +119,10 @@ func isVIP(user User) bool {
 }
 ```
 
-Even, you can use `json.Marshal` to generate the map[string]interface{} if you don't want to write it manually. Make sure the structure tag should be same as the name in rawYQL.
+Even, you can use `json.Marshal` to generate the map[string]interface{} if you don't want to write it manually. Make sure the structure tag should be same as the name in rawXQL.
 
 ### Syntax
-See [grammar file](./internal/grammar/Yql.g4)
+See [grammar file](./internal/grammar/Xql.g4)
 
 ### Compatibility promise
 The API `Match`is stable now. Its grammar won't change any more, and what I only will do next is to optimize, speed up and add more helpers if needed.
@@ -132,7 +132,7 @@ The API `Match`is stable now. Its grammar won't change any more, and what I only
 Though it's kinder difficult to create a robust new Go compiler, there're still some interesting things could do. For example, bringing lambda function in Go which maybe look like:
 ```go
 var scores = []int{1,2,3,4,5,6,7,8,9,10}
-newSlice := yql.Filter(`(v) => v % 2 == 0`).Map(`(v) => v*v`).Call(scores).Interface()
+newSlice := xql.Filter(`(v) => v % 2 == 0`).Map(`(v) => v*v`).Call(scores).Interface()
 //[]int{4,16,36,64,100}
 ```
 If the lambda function won't change all time, it can be cached like opcode, which is as fast as the compiled code. And in most cases, who care?(pythoner?)
@@ -173,7 +173,7 @@ var students = []Student{
 	},
 }
 
-t = yql.Filter(`(v) => v.Age > 23 || v.Name == "alice"`).Call(students).Interface()
+t = xql.Filter(`(v) => v.Age > 23 || v.Name == "alice"`).Call(students).Interface()
 res,_ := t.([]Student)
 // res: Student{"deen",24} Student{"alice", 23} Student{"tom", 25}
 ```

@@ -1,10 +1,10 @@
-// Generated from Yql.g4 by ANTLR 4.7.
+// Generated from Xql.g4 by ANTLR 4.7.
 
-package grammar // Yql
+package grammar // Xql
 import "github.com/antlr/antlr4/runtime/Go/antlr"
 
-// YqlListener is a complete listener for a parse tree produced by YqlParser.
-type YqlListener interface {
+// XqlListener is a complete listener for a parse tree produced by XqlParser.
+type XqlListener interface {
 	antlr.ParseTreeListener
 
 	// EnterQuery is called when entering the query production.

@@ -1,32 +1,32 @@
-package yql_test
+package xql_test
 
 import (
 	"fmt"
 
-	"github.com/caibirdme/yql"
+	"github.com/NaujOyamat/xql"
 )
 
 func ExampleMatch() {
-	rawYQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
-	result, _ := yql.Match(rawYQL, map[string]interface{}{
+	rawXQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
+	result, _ := xql.Match(rawXQL, map[string]interface{}{
 		"name":  "deen",
 		"age":   23,
 		"hobby": "basketball",
 		"score": int64(100),
 	})
 	fmt.Println(result)
-	rawYQL = `score ∩ (7,1,9,5,3)`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score ∩ (7,1,9,5,3)`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int64{3, 100, 200},
 	})
 	fmt.Println(result)
-	rawYQL = `score in (7,1,9,5,3)`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score in (7,1,9,5,3)`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int64{3, 5, 2},
 	})
 	fmt.Println(result)
-	rawYQL = `score.sum() > 10`
-	result, _ = yql.Match(rawYQL, map[string]interface{}{
+	rawXQL = `score.sum() > 10`
+	result, _ = xql.Match(rawXQL, map[string]interface{}{
 		"score": []int{1, 2, 3, 4, 5},
 	})
 	fmt.Println(result)
@@ -38,8 +38,8 @@ func ExampleMatch() {
 }
 
 func ExampleRule() {
-	rawYQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
-	ruler, _ := yql.Rule(rawYQL)
+	rawXQL := `name='deen' and age>=23 and (hobby in ('soccer', 'swim') or score>90)`
+	ruler, _ := xql.Rule(rawXQL)
 	result, _ := ruler.Match(map[string]interface{}{
 		"name":  "deen",
 		"age":   23,

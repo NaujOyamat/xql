@@ -1,13 +1,13 @@
-package yql
+package xql
 
 import (
 	"fmt"
 	"reflect"
 	"strconv"
 
+	"github.com/NaujOyamat/xql/internal/grammar"
+	"github.com/NaujOyamat/xql/internal/stack"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
-	"github.com/caibirdme/yql/internal/grammar"
-	"github.com/caibirdme/yql/internal/stack"
 )
 
 type boolStack interface {
@@ -15,8 +15,8 @@ type boolStack interface {
 	Pop() bool
 }
 
-type yqlListener struct {
-	*grammar.BaseYqlListener
+type xqlListener struct {
+	*grammar.BaseXqlListener
 	stack       boolStack
 	data        map[string]interface{}
 	fieldName   string
@@ -24,7 +24,7 @@ type yqlListener struct {
 	notFoundErr error
 }
 
-func (l *yqlListener) ExitBooleanExpr(ctx *grammar.BooleanExprContext) {
+func (l *xqlListener) ExitBooleanExpr(ctx *grammar.BooleanExprContext) {
 	if l.notFoundErr != nil {
 		return
 	}
@@ -50,7 +50,7 @@ func (l *yqlListener) ExitBooleanExpr(ctx *grammar.BooleanExprContext) {
 	l.stack.Push(res)
 }
 
-func (l *yqlListener) ExitLeftexpr(ctx *grammar.LeftexprContext) {
+func (l *xqlListener) ExitLeftexpr(ctx *grammar.LeftexprContext) {
 	l.fieldName = ctx.FIELDNAME().GetText()
 	funcs := ctx.AllFUNC()
 	l.funcs = l.funcs[:0]
@@ -62,7 +62,7 @@ func (l *yqlListener) ExitLeftexpr(ctx *grammar.LeftexprContext) {
 	}
 }
 
-func (l *yqlListener) ExitOrExpr(ctx *grammar.OrExprContext) {
+func (l *xqlListener) ExitOrExpr(ctx *grammar.OrExprContext) {
 	if l.notFoundErr != nil {
 		return
 	}
@@ -71,7 +71,7 @@ func (l *yqlListener) ExitOrExpr(ctx *grammar.OrExprContext) {
 	l.stack.Push(q1 || q2)
 }
 
-func (l *yqlListener) ExitAndExpr(ctx *grammar.AndExprContext) {
+func (l *xqlListener) ExitAndExpr(ctx *grammar.AndExprContext) {
 	if l.notFoundErr != nil {
 		return
 	}
@@ -81,7 +81,7 @@ func (l *yqlListener) ExitAndExpr(ctx *grammar.AndExprContext) {
 }
 
 type bailLexer struct {
-	*grammar.YqlLexer
+	*grammar.XqlLexer
 }
 
 // Override default Recover and do nothing
@@ -94,7 +94,7 @@ var (
 	bailErrStrategy = antlr.NewBailErrorStrategy()
 )
 
-func match(rawYQL string, data map[string]interface{}) (ok bool, err error) {
+func match(rawXQL string, data map[string]interface{}) (ok bool, err error) {
 	if 0 == len(data) {
 		return false, nil
 	}
@@ -104,17 +104,17 @@ func match(rawYQL string, data map[string]interface{}) (ok bool, err error) {
 			err = fmt.Errorf("%v", r)
 		}
 	}()
-	inputStream := antlr.NewInputStream(rawYQL)
-	lexer := &bailLexer{grammar.NewYqlLexer(inputStream)}
+	inputStream := antlr.NewInputStream(rawXQL)
+	lexer := &bailLexer{grammar.NewXqlLexer(inputStream)}
 	stream := antlr.NewCommonTokenStream(lexer, 0)
-	parser := grammar.NewYqlParser(stream)
+	parser := grammar.NewXqlParser(stream)
 	parser.BuildParseTrees = true
 	parser.RemoveErrorListeners()
 	parser.SetErrorHandler(bailErrStrategy)
 	tree := parser.Query()
 	s, release := stack.NewStack()
 	defer release()
-	l := &yqlListener{stack: s, funcs: make([]string, 0, 1)}
+	l := &xqlListener{stack: s, funcs: make([]string, 0, 1)}
 	l.data = data
 	antlr.ParseTreeWalkerDefault.Walk(l, tree)
 	if l.notFoundErr != nil {
@@ -140,7 +140,7 @@ func (ast cachedAST) Match(data map[string]interface{}) (bool, error) {
 	}
 	s, release := stack.NewStack()
 	defer release()
-	l := &yqlListener{stack: s, funcs: make([]string, 0, 1)}
+	l := &xqlListener{stack: s, funcs: make([]string, 0, 1)}
 	l.data = data
 	antlr.ParseTreeWalkerDefault.Walk(l, ast.query)
 	if l.notFoundErr != nil {
@@ -150,9 +150,9 @@ func (ast cachedAST) Match(data map[string]interface{}) (bool, error) {
 }
 
 // Rule analyze a rule and store the AST
-// it returns error when receives illegal yql expression
+// it returns error when receives illegal xql expression
 // It's more faster than using Match directly
-func Rule(rawYQL string) (ruler Ruler, err error) {
+func Rule(rawXQL string) (ruler Ruler, err error) {
 	ast := cachedAST{}
 	defer func() {
 		if r := recover(); nil != r {
@@ -160,10 +160,10 @@ func Rule(rawYQL string) (ruler Ruler, err error) {
 			ruler = ast
 		}
 	}()
-	inputStream := antlr.NewInputStream(rawYQL)
-	lexer := &bailLexer{grammar.NewYqlLexer(inputStream)}
+	inputStream := antlr.NewInputStream(rawXQL)
+	lexer := &bailLexer{grammar.NewXqlLexer(inputStream)}
 	stream := antlr.NewCommonTokenStream(lexer, 0)
-	parser := grammar.NewYqlParser(stream)
+	parser := grammar.NewXqlParser(stream)
 	parser.BuildParseTrees = true
 	parser.RemoveErrorListeners()
 	parser.SetErrorHandler(bailErrStrategy)
@@ -171,10 +171,10 @@ func Rule(rawYQL string) (ruler Ruler, err error) {
 	return ast, nil
 }
 
-// Match interprete the rawYQL and execute it with the provided data
-// error will be returned if rawYQL contains illegal syntax
-func Match(rawYQL string, data map[string]interface{}) (bool, error) {
-	return match(rawYQL, data)
+// Match interprete the rawXQL and execute it with the provided data
+// error will be returned if rawXQL contains illegal syntax
+func Match(rawXQL string, data map[string]interface{}) (bool, error) {
+	return match(rawXQL, data)
 }
 
 func compare(actualValue interface{}, expectValue []string, op string) bool {

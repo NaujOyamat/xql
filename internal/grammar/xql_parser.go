@@ -1,6 +1,6 @@
-// Generated from Yql.g4 by ANTLR 4.7.
+// Generated from Xql.g4 by ANTLR 4.7.
 
-package grammar // Yql
+package grammar // Xql
 import (
 	"fmt"
 	"reflect"
@@ -67,12 +67,12 @@ func init() {
 	}
 }
 
-type YqlParser struct {
+type XqlParser struct {
 	*antlr.BaseParser
 }
 
-func NewYqlParser(input antlr.TokenStream) *YqlParser {
-	this := new(YqlParser)
+func NewXqlParser(input antlr.TokenStream) *XqlParser {
+	this := new(XqlParser)
 
 	this.BaseParser = antlr.NewBaseParser(input)
 
@@ -80,48 +80,48 @@ func NewYqlParser(input antlr.TokenStream) *YqlParser {
 	this.RuleNames = ruleNames
 	this.LiteralNames = literalNames
 	this.SymbolicNames = symbolicNames
-	this.GrammarFileName = "Yql.g4"
+	this.GrammarFileName = "Xql.g4"
 
 	return this
 }
 
-// YqlParser tokens.
+// XqlParser tokens.
 const (
-	YqlParserEOF       = antlr.TokenEOF
-	YqlParserT__0      = 1
-	YqlParserT__1      = 2
-	YqlParserT__2      = 3
-	YqlParserT__3      = 4
-	YqlParserT__4      = 5
-	YqlParserT__5      = 6
-	YqlParserT__6      = 7
-	YqlParserT__7      = 8
-	YqlParserT__8      = 9
-	YqlParserT__9      = 10
-	YqlParserT__10     = 11
-	YqlParserT__11     = 12
-	YqlParserT__12     = 13
-	YqlParserT__13     = 14
-	YqlParserT__14     = 15
-	YqlParserT__15     = 16
-	YqlParserT__16     = 17
-	YqlParserTRUE      = 18
-	YqlParserFALSE     = 19
-	YqlParserFUNC      = 20
-	YqlParserFIELDNAME = 21
-	YqlParserSTRING    = 22
-	YqlParserINT       = 23
-	YqlParserFLOAT     = 24
-	YqlParserWS        = 25
+	XqlParserEOF       = antlr.TokenEOF
+	XqlParserT__0      = 1
+	XqlParserT__1      = 2
+	XqlParserT__2      = 3
+	XqlParserT__3      = 4
+	XqlParserT__4      = 5
+	XqlParserT__5      = 6
+	XqlParserT__6      = 7
+	XqlParserT__7      = 8
+	XqlParserT__8      = 9
+	XqlParserT__9      = 10
+	XqlParserT__10     = 11
+	XqlParserT__11     = 12
+	XqlParserT__12     = 13
+	XqlParserT__13     = 14
+	XqlParserT__14     = 15
+	XqlParserT__15     = 16
+	XqlParserT__16     = 17
+	XqlParserTRUE      = 18
+	XqlParserFALSE     = 19
+	XqlParserFUNC      = 20
+	XqlParserFIELDNAME = 21
+	XqlParserSTRING    = 22
+	XqlParserINT       = 23
+	XqlParserFLOAT     = 24
+	XqlParserWS        = 25
 )
 
-// YqlParser rules.
+// XqlParser rules.
 const (
-	YqlParserRULE_query       = 0
-	YqlParserRULE_expr        = 1
-	YqlParserRULE_booleanExpr = 2
-	YqlParserRULE_leftexpr    = 3
-	YqlParserRULE_value       = 4
+	XqlParserRULE_query       = 0
+	XqlParserRULE_expr        = 1
+	XqlParserRULE_booleanExpr = 2
+	XqlParserRULE_leftexpr    = 3
+	XqlParserRULE_value       = 4
 )
 
 // IQueryContext is an interface to support dynamic dispatch.
@@ -143,7 +143,7 @@ type QueryContext struct {
 func NewEmptyQueryContext() *QueryContext {
 	var p = new(QueryContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = YqlParserRULE_query
+	p.RuleIndex = XqlParserRULE_query
 	return p
 }
 
@@ -155,7 +155,7 @@ func NewQueryContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = YqlParserRULE_query
+	p.RuleIndex = XqlParserRULE_query
 
 	return p
 }
@@ -181,20 +181,20 @@ func (s *QueryContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *QueryContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterQuery(s)
 	}
 }
 
 func (s *QueryContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitQuery(s)
 	}
 }
 
-func (p *YqlParser) Query() (localctx IQueryContext) {
+func (p *XqlParser) Query() (localctx IQueryContext) {
 	localctx = NewQueryContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 0, YqlParserRULE_query)
+	p.EnterRule(localctx, 0, XqlParserRULE_query)
 
 	defer func() {
 		p.ExitRule()
@@ -240,7 +240,7 @@ type ExprContext struct {
 func NewEmptyExprContext() *ExprContext {
 	var p = new(ExprContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = YqlParserRULE_expr
+	p.RuleIndex = XqlParserRULE_expr
 	return p
 }
 
@@ -252,7 +252,7 @@ func NewExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = YqlParserRULE_expr
+	p.RuleIndex = XqlParserRULE_expr
 
 	return p
 }
@@ -300,13 +300,13 @@ func (s *EmbbedExprContext) Expr() IExprContext {
 }
 
 func (s *EmbbedExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterEmbbedExpr(s)
 	}
 }
 
 func (s *EmbbedExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitEmbbedExpr(s)
 	}
 }
@@ -353,13 +353,13 @@ func (s *OrExprContext) Expr(i int) IExprContext {
 }
 
 func (s *OrExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterOrExpr(s)
 	}
 }
 
 func (s *OrExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitOrExpr(s)
 	}
 }
@@ -393,13 +393,13 @@ func (s *BoolExprContext) BooleanExpr() IBooleanExprContext {
 }
 
 func (s *BoolExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterBoolExpr(s)
 	}
 }
 
 func (s *BoolExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitBoolExpr(s)
 	}
 }
@@ -446,29 +446,29 @@ func (s *AndExprContext) Expr(i int) IExprContext {
 }
 
 func (s *AndExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterAndExpr(s)
 	}
 }
 
 func (s *AndExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitAndExpr(s)
 	}
 }
 
-func (p *YqlParser) Expr() (localctx IExprContext) {
+func (p *XqlParser) Expr() (localctx IExprContext) {
 	return p.expr(0)
 }
 
-func (p *YqlParser) expr(_p int) (localctx IExprContext) {
+func (p *XqlParser) expr(_p int) (localctx IExprContext) {
 	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
 	_parentState := p.GetState()
 	localctx = NewExprContext(p, p.GetParserRuleContext(), _parentState)
 	var _prevctx IExprContext = localctx
 	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
 	_startState := 2
-	p.EnterRecursionRule(localctx, 2, YqlParserRULE_expr, _p)
+	p.EnterRecursionRule(localctx, 2, XqlParserRULE_expr, _p)
 
 	defer func() {
 		p.UnrollRecursionContexts(_parentctx)
@@ -493,7 +493,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case YqlParserFIELDNAME:
+	case XqlParserFIELDNAME:
 		localctx = NewBoolExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
@@ -503,13 +503,13 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 			p.BooleanExpr()
 		}
 
-	case YqlParserT__2:
+	case XqlParserT__2:
 		localctx = NewEmbbedExprContext(p, localctx)
 		p.SetParserRuleContext(localctx)
 		_prevctx = localctx
 		{
 			p.SetState(14)
-			p.Match(YqlParserT__2)
+			p.Match(XqlParserT__2)
 		}
 		{
 			p.SetState(15)
@@ -517,7 +517,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 		}
 		{
 			p.SetState(16)
-			p.Match(YqlParserT__3)
+			p.Match(XqlParserT__3)
 		}
 
 	default:
@@ -539,7 +539,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewAndExprContext(p, NewExprContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, YqlParserRULE_expr)
+				p.PushNewRecursionContext(localctx, _startState, XqlParserRULE_expr)
 				p.SetState(20)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
@@ -547,7 +547,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 				}
 				{
 					p.SetState(21)
-					p.Match(YqlParserT__0)
+					p.Match(XqlParserT__0)
 				}
 				{
 					p.SetState(22)
@@ -556,7 +556,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 
 			case 2:
 				localctx = NewOrExprContext(p, NewExprContext(p, _parentctx, _parentState))
-				p.PushNewRecursionContext(localctx, _startState, YqlParserRULE_expr)
+				p.PushNewRecursionContext(localctx, _startState, XqlParserRULE_expr)
 				p.SetState(23)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
@@ -564,7 +564,7 @@ func (p *YqlParser) expr(_p int) (localctx IExprContext) {
 				}
 				{
 					p.SetState(24)
-					p.Match(YqlParserT__1)
+					p.Match(XqlParserT__1)
 				}
 				{
 					p.SetState(25)
@@ -608,7 +608,7 @@ type BooleanExprContext struct {
 func NewEmptyBooleanExprContext() *BooleanExprContext {
 	var p = new(BooleanExprContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = YqlParserRULE_booleanExpr
+	p.RuleIndex = XqlParserRULE_booleanExpr
 	return p
 }
 
@@ -620,7 +620,7 @@ func NewBooleanExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = YqlParserRULE_booleanExpr
+	p.RuleIndex = XqlParserRULE_booleanExpr
 
 	return p
 }
@@ -673,20 +673,20 @@ func (s *BooleanExprContext) ToStringTree(ruleNames []string, recog antlr.Recogn
 }
 
 func (s *BooleanExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterBooleanExpr(s)
 	}
 }
 
 func (s *BooleanExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitBooleanExpr(s)
 	}
 }
 
-func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
+func (p *XqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 	localctx = NewBooleanExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, YqlParserRULE_booleanExpr)
+	p.EnterRule(localctx, 4, XqlParserRULE_booleanExpr)
 	var _la int
 
 	defer func() {
@@ -722,7 +722,7 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__4)|(1<<YqlParserT__5)|(1<<YqlParserT__6)|(1<<YqlParserT__7)|(1<<YqlParserT__8)|(1<<YqlParserT__9))) != 0) {
+		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<XqlParserT__4)|(1<<XqlParserT__5)|(1<<XqlParserT__6)|(1<<XqlParserT__7)|(1<<XqlParserT__8)|(1<<XqlParserT__9))) != 0) {
 			var _ri = p.GetErrorHandler().RecoverInline(p)
 
 			localctx.(*BooleanExprContext).op = _ri
@@ -749,7 +749,7 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 
 		_la = p.GetTokenStream().LA(1)
 
-		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserT__10)|(1<<YqlParserT__11)|(1<<YqlParserT__12)|(1<<YqlParserT__13))) != 0) {
+		if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<XqlParserT__10)|(1<<XqlParserT__11)|(1<<XqlParserT__12)|(1<<XqlParserT__13))) != 0) {
 			var _ri = p.GetErrorHandler().RecoverInline(p)
 
 			localctx.(*BooleanExprContext).op = _ri
@@ -759,7 +759,7 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 		}
 		{
 			p.SetState(37)
-			p.Match(YqlParserT__2)
+			p.Match(XqlParserT__2)
 		}
 		{
 			p.SetState(38)
@@ -769,10 +769,10 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		for _la == YqlParserT__14 {
+		for _la == XqlParserT__14 {
 			{
 				p.SetState(39)
-				p.Match(YqlParserT__14)
+				p.Match(XqlParserT__14)
 			}
 			{
 				p.SetState(40)
@@ -785,7 +785,7 @@ func (p *YqlParser) BooleanExpr() (localctx IBooleanExprContext) {
 		}
 		{
 			p.SetState(46)
-			p.Match(YqlParserT__3)
+			p.Match(XqlParserT__3)
 		}
 
 	}
@@ -812,7 +812,7 @@ type LeftexprContext struct {
 func NewEmptyLeftexprContext() *LeftexprContext {
 	var p = new(LeftexprContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = YqlParserRULE_leftexpr
+	p.RuleIndex = XqlParserRULE_leftexpr
 	return p
 }
 
@@ -824,7 +824,7 @@ func NewLeftexprContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = YqlParserRULE_leftexpr
+	p.RuleIndex = XqlParserRULE_leftexpr
 
 	return p
 }
@@ -832,15 +832,15 @@ func NewLeftexprContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 func (s *LeftexprContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *LeftexprContext) FIELDNAME() antlr.TerminalNode {
-	return s.GetToken(YqlParserFIELDNAME, 0)
+	return s.GetToken(XqlParserFIELDNAME, 0)
 }
 
 func (s *LeftexprContext) AllFUNC() []antlr.TerminalNode {
-	return s.GetTokens(YqlParserFUNC)
+	return s.GetTokens(XqlParserFUNC)
 }
 
 func (s *LeftexprContext) FUNC(i int) antlr.TerminalNode {
-	return s.GetToken(YqlParserFUNC, i)
+	return s.GetToken(XqlParserFUNC, i)
 }
 
 func (s *LeftexprContext) GetRuleContext() antlr.RuleContext {
@@ -852,20 +852,20 @@ func (s *LeftexprContext) ToStringTree(ruleNames []string, recog antlr.Recognize
 }
 
 func (s *LeftexprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterLeftexpr(s)
 	}
 }
 
 func (s *LeftexprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitLeftexpr(s)
 	}
 }
 
-func (p *YqlParser) Leftexpr() (localctx ILeftexprContext) {
+func (p *XqlParser) Leftexpr() (localctx ILeftexprContext) {
 	localctx = NewLeftexprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, YqlParserRULE_leftexpr)
+	p.EnterRule(localctx, 6, XqlParserRULE_leftexpr)
 	var _la int
 
 	defer func() {
@@ -887,29 +887,29 @@ func (p *YqlParser) Leftexpr() (localctx ILeftexprContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(50)
-		p.Match(YqlParserFIELDNAME)
+		p.Match(XqlParserFIELDNAME)
 	}
 	p.SetState(58)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == YqlParserT__15 {
+	if _la == XqlParserT__15 {
 		p.SetState(54)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
-		for ok := true; ok; ok = _la == YqlParserT__15 {
+		for ok := true; ok; ok = _la == XqlParserT__15 {
 			{
 				p.SetState(51)
-				p.Match(YqlParserT__15)
+				p.Match(XqlParserT__15)
 			}
 			{
 				p.SetState(52)
-				p.Match(YqlParserFUNC)
+				p.Match(XqlParserFUNC)
 			}
 			{
 				p.SetState(53)
-				p.Match(YqlParserT__16)
+				p.Match(XqlParserT__16)
 			}
 
 			p.SetState(56)
@@ -941,7 +941,7 @@ type ValueContext struct {
 func NewEmptyValueContext() *ValueContext {
 	var p = new(ValueContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = YqlParserRULE_value
+	p.RuleIndex = XqlParserRULE_value
 	return p
 }
 
@@ -953,7 +953,7 @@ func NewValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = YqlParserRULE_value
+	p.RuleIndex = XqlParserRULE_value
 
 	return p
 }
@@ -961,23 +961,23 @@ func NewValueContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 func (s *ValueContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *ValueContext) STRING() antlr.TerminalNode {
-	return s.GetToken(YqlParserSTRING, 0)
+	return s.GetToken(XqlParserSTRING, 0)
 }
 
 func (s *ValueContext) INT() antlr.TerminalNode {
-	return s.GetToken(YqlParserINT, 0)
+	return s.GetToken(XqlParserINT, 0)
 }
 
 func (s *ValueContext) FLOAT() antlr.TerminalNode {
-	return s.GetToken(YqlParserFLOAT, 0)
+	return s.GetToken(XqlParserFLOAT, 0)
 }
 
 func (s *ValueContext) TRUE() antlr.TerminalNode {
-	return s.GetToken(YqlParserTRUE, 0)
+	return s.GetToken(XqlParserTRUE, 0)
 }
 
 func (s *ValueContext) FALSE() antlr.TerminalNode {
-	return s.GetToken(YqlParserFALSE, 0)
+	return s.GetToken(XqlParserFALSE, 0)
 }
 
 func (s *ValueContext) GetRuleContext() antlr.RuleContext {
@@ -989,20 +989,20 @@ func (s *ValueContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) 
 }
 
 func (s *ValueContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.EnterValue(s)
 	}
 }
 
 func (s *ValueContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(YqlListener); ok {
+	if listenerT, ok := listener.(XqlListener); ok {
 		listenerT.ExitValue(s)
 	}
 }
 
-func (p *YqlParser) Value() (localctx IValueContext) {
+func (p *XqlParser) Value() (localctx IValueContext) {
 	localctx = NewValueContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, YqlParserRULE_value)
+	p.EnterRule(localctx, 8, XqlParserRULE_value)
 	var _la int
 
 	defer func() {
@@ -1025,7 +1025,7 @@ func (p *YqlParser) Value() (localctx IValueContext) {
 	p.SetState(60)
 	_la = p.GetTokenStream().LA(1)
 
-	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<YqlParserTRUE)|(1<<YqlParserFALSE)|(1<<YqlParserSTRING)|(1<<YqlParserINT)|(1<<YqlParserFLOAT))) != 0) {
+	if !(((_la)&-(0x1f+1)) == 0 && ((1<<uint(_la))&((1<<XqlParserTRUE)|(1<<XqlParserFALSE)|(1<<XqlParserSTRING)|(1<<XqlParserINT)|(1<<XqlParserFLOAT))) != 0) {
 		p.GetErrorHandler().RecoverInline(p)
 	} else {
 		p.GetErrorHandler().ReportMatch(p)
@@ -1035,7 +1035,7 @@ func (p *YqlParser) Value() (localctx IValueContext) {
 	return localctx
 }
 
-func (p *YqlParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
+func (p *XqlParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
 	switch ruleIndex {
 	case 1:
 		var t *ExprContext = nil
@@ -1049,7 +1049,7 @@ func (p *YqlParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int
 	}
 }
 
-func (p *YqlParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
+func (p *XqlParser) Expr_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
 		return p.Precpred(p.GetParserRuleContext(), 3)

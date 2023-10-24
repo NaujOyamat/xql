@@ -1,4 +1,4 @@
-// Generated from Yql.g4 by ANTLR 4.7.
+// Generated from Xql.g4 by ANTLR 4.7.
 
 package grammar
 
@@ -124,7 +124,7 @@ var lexerRuleNames = []string{
 	"WS",
 }
 
-type YqlLexer struct {
+type XqlLexer struct {
 	*antlr.BaseLexer
 	channelNames []string
 	modeNames    []string
@@ -139,9 +139,9 @@ func init() {
 	}
 }
 
-func NewYqlLexer(input antlr.CharStream) *YqlLexer {
+func NewXqlLexer(input antlr.CharStream) *XqlLexer {
 
-	l := new(YqlLexer)
+	l := new(XqlLexer)
 
 	l.BaseLexer = antlr.NewBaseLexer(input)
 	l.Interpreter = antlr.NewLexerATNSimulator(l, lexerAtn, lexerDecisionToDFA, antlr.NewPredictionContextCache())
@@ -151,37 +151,37 @@ func NewYqlLexer(input antlr.CharStream) *YqlLexer {
 	l.RuleNames = lexerRuleNames
 	l.LiteralNames = lexerLiteralNames
 	l.SymbolicNames = lexerSymbolicNames
-	l.GrammarFileName = "Yql.g4"
+	l.GrammarFileName = "Xql.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 
 	return l
 }
 
-// YqlLexer tokens.
+// XqlLexer tokens.
 const (
-	YqlLexerT__0      = 1
-	YqlLexerT__1      = 2
-	YqlLexerT__2      = 3
-	YqlLexerT__3      = 4
-	YqlLexerT__4      = 5
-	YqlLexerT__5      = 6
-	YqlLexerT__6      = 7
-	YqlLexerT__7      = 8
-	YqlLexerT__8      = 9
-	YqlLexerT__9      = 10
-	YqlLexerT__10     = 11
-	YqlLexerT__11     = 12
-	YqlLexerT__12     = 13
-	YqlLexerT__13     = 14
-	YqlLexerT__14     = 15
-	YqlLexerT__15     = 16
-	YqlLexerT__16     = 17
-	YqlLexerTRUE      = 18
-	YqlLexerFALSE     = 19
-	YqlLexerFUNC      = 20
-	YqlLexerFIELDNAME = 21
-	YqlLexerSTRING    = 22
-	YqlLexerINT       = 23
-	YqlLexerFLOAT     = 24
-	YqlLexerWS        = 25
+	XqlLexerT__0      = 1
+	XqlLexerT__1      = 2
+	XqlLexerT__2      = 3
+	XqlLexerT__3      = 4
+	XqlLexerT__4      = 5
+	XqlLexerT__5      = 6
+	XqlLexerT__6      = 7
+	XqlLexerT__7      = 8
+	XqlLexerT__8      = 9
+	XqlLexerT__9      = 10
+	XqlLexerT__10     = 11
+	XqlLexerT__11     = 12
+	XqlLexerT__12     = 13
+	XqlLexerT__13     = 14
+	XqlLexerT__14     = 15
+	XqlLexerT__15     = 16
+	XqlLexerT__16     = 17
+	XqlLexerTRUE      = 18
+	XqlLexerFALSE     = 19
+	XqlLexerFUNC      = 20
+	XqlLexerFIELDNAME = 21
+	XqlLexerSTRING    = 22
+	XqlLexerINT       = 23
+	XqlLexerFLOAT     = 24
+	XqlLexerWS        = 25
 )

@@ -1,4 +1,4 @@
-grammar Yql;
+grammar Xql;
 
 query: expr;
 

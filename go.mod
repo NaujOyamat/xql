@@ -1,4 +1,4 @@
-module github.com/caibirdme/yql
+module github.com/NaujOyamat/xql
 
 go 1.15
 

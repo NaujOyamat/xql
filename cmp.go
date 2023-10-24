@@ -1,4 +1,4 @@
-package yql
+package xql
 
 import (
 	"math"
